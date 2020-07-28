@@ -96,13 +96,22 @@ public class MyReceiver extends BroadcastReceiver {
                                 for (int j = endingPos; j >= startingPos; j--)
                                     amount += ((double) (body.charAt(j) - '0')) * (Math.pow(10, endingPos - j));
                                 //this is for wallet functionality where it checks if the sender is the source of the wallet
-                                //and if the amount is a single digit multiple of powers of 10
+                                //and if the amount is a angel number like 111,222 etc...
                                 //and if the debited keyword is present as it will add this amount to paytm_bal and subtract it from bank_bal
-                                if (NameList.get(1).equals(sender) && body.contains("debited"))
+                                if (sender.contains(NameList.get(1)) && body.contains("debited"))
                                 {
                                     temp = (int) amount;
-                                    if (temp % (Math.pow(10, (endingPos - startingPos))) == 0)
-                                        data.isperfect = true;
+                                    int angel=temp%10;
+                                    data.isperfect=true;
+                                    while (temp != 0)
+                                    {
+                                        if(angel!=temp%10)
+                                        {
+                                            data.isperfect=false;
+                                            break;
+                                        }
+                                        temp=temp/10;
+                                    }
                                 }
                                 data.debited = false;
                                 if (body.contains("Paid"))

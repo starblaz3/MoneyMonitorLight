@@ -107,7 +107,7 @@
                         android:paddingLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:textColor="#000000"
-                        android:text="-source for wallet(UPI); this entry only works if cash input for the above wallet is sent in SMS,if you have other inputs for wallets then fill this field with 69420 as this fields purpose is to make sure the amount_spent/month is not incorrect as UPI users cash income would be recorded as well as the wallet expenditure hence doubling amount_spent my technique to counter this problem is that you add cash through UPI and only in perfect powers of 10(not exactly @anir) like 2000,1000 where only 1 digit is other than 0 this way i can add this amount to wallet_balance and deduct it from bank_bal at the same time "
+                        android:text="-source for wallet(UPI); this entry only works if cash input for the above wallet is sent in SMS,if you have other inputs for wallets then fill this field with 69420 as this fields purpose is to make sure the amount_spent/month is not incorrect as UPI users cash income would be recorded as well as the wallet expenditure hence doubling amount_spent my technique to counter this problem is that you add cash through UPI and only input angel numbers such as 111,222, etc..->this way i can add this amount to wallet_balance and deduct it from bank_bal at the same time "
                         android:textSize="16sp"
                         />
                     <TextView
@@ -186,6 +186,15 @@
                         android:gravity="start"
                         android:text="8) In addData u can manually add information about a expenditure u had through cash or didnt receive sms for "
                         android:textColor="#000000"
+                        android:textSize="17sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:layout_marginTop="16dp"
+                        android:textColor="#000000"
+                        android:text="9)in getItem you can change the isperfect variable which determines weather the amount debited from bank has been credited to wallet balance whomst technique is mentioned above (intentional whether)"
                         android:textSize="17sp"/>
                 </LinearLayout>
         </ScrollView>

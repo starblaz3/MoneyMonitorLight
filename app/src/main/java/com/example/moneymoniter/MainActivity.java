@@ -141,27 +141,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 sender=datalist.get(i).sender;
                 if(datalist.get(i).date.getMonth()==Calendar.getInstance().get(Calendar.MONTH ) && datalist.get(i).debited)
                 {
-                    if(datalist.get(i).sender.contains(nameList.get(1)) && datalist.get(i).isperfect && datalist.get(i).debited)
-                        amount_month=amount_month+0;
+                    if (datalist.get(i).sender.contains(nameList.get(1)) && datalist.get(i).isperfect && datalist.get(i).debited)
+                        amount_month = amount_month + 0;
                     else
                         amount_month = amount_month + datalist.get(i).amount;
                 }
-                if(sender.contains(nameList.get(1)) && datalist.get(i).isperfect && datalist.get(i).debited)
+                if (sender.contains(nameList.get(1)) && datalist.get(i).isperfect && datalist.get(i).debited)
                 {
-                    paytm_bal+=datalist.get(i).amount;
-                    bank_bal=bank_bal-datalist.get(i).amount;
-                }
-                else if(sender.contains(nameList.get(0)) && datalist.get(i).debited)
-                    paytm_bal = paytm_bal - datalist.get(i).amount;
-                else if(sender.contains(nameList.get(0)))
                     paytm_bal += datalist.get(i).amount;
-                else if(sender.contains(nameList.get(2)) && datalist.get(i).debited)
                     bank_bal = bank_bal - datalist.get(i).amount;
-                else if(sender.contains(nameList.get(2)) )
+                }
+                else if (sender.contains(nameList.get(0)) && datalist.get(i).debited)
+                    paytm_bal = paytm_bal - datalist.get(i).amount;
+                else if (sender.contains(nameList.get(0)))
+                    paytm_bal += datalist.get(i).amount;
+                else if (sender.contains(nameList.get(2)) && datalist.get(i).debited)
+                    bank_bal = bank_bal - datalist.get(i).amount;
+                else if (sender.contains(nameList.get(2)))
                     bank_bal += datalist.get(i).amount;
-                else if(sender.contains(nameList.get(3)) && datalist.get(i).debited)
+                else if (sender.contains(nameList.get(3)) && datalist.get(i).debited)
                     bank_bal = bank_bal - datalist.get(i).amount;
-                else if(sender.contains(nameList.get(3)) )
+                else if (sender.contains(nameList.get(3)))
                     bank_bal += datalist.get(i).amount;
                 /*if(sender.equals("BPiPaytm") && datalist.get(i).debited)
                     paytm_bal=paytm_bal-datalist.get(i).amount;

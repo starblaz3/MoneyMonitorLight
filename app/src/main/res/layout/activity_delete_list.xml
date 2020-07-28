@@ -34,9 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="delete full List"
+            android:background="@drawable/ripple"
             android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"
-            android:onClick="clicked"
+            android:id="@+id/buttonDeleteList"
             />
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView

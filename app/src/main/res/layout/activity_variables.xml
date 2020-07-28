@@ -7,7 +7,7 @@
     android:id="@+id/drawer_layout_variables"
     android:fitsSystemWindows="true"
     tools:context=".variables"
-    tools:openDrawer="start">
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="submit"
-                android:onClick="updateVariables"
+                android:background="@drawable/ripple"
+                android:id="@+id/buttonVariables"
                 android:layout_marginBottom="100dp"
                 android:layout_gravity="center_horizontal"/>
         </LinearLayout>

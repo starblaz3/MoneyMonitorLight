@@ -2,11 +2,14 @@ package com.example.moneymoniter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,6 +17,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +36,7 @@ public class variables extends AppCompatActivity implements NavigationView.OnNav
     LinearLayout linearLayout;
     TextView textView;
     ArrayList<Integer> list;
+    Button button;
     LinearLayout.LayoutParams editTextLayoutParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,34 @@ public class variables extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_variables);
         Toolbar toolbar=findViewById(R.id.toolbar_variables);
         drawer=findViewById(R.id.drawer_layout_variables);
+        button=findViewById(R.id.buttonVariables);
         NavigationView navigationView=findViewById(R.id.nav_view_variables);
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        final Context context=this;
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setMessage("Are you sure you want to add these variables")
+                        .setTitle("Confirmation")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i)
+                            {
+                                updateVariables();
+                            }
+                        });
+                AlertDialog dialog=builder.create();
+                dialog.show();
+            }
+        });
         SharedPreferences sharedPreferences=getSharedPreferences("varList",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         Gson gson=new Gson();
@@ -139,7 +166,7 @@ public class variables extends AppCompatActivity implements NavigationView.OnNav
         }
     }
     //updates variables when submit button is clicked
-    public void updateVariables(View view)
+    public void updateVariables()
     {
         SharedPreferences sharedPreferences=getSharedPreferences("varList",MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
@@ -152,6 +179,7 @@ public class variables extends AppCompatActivity implements NavigationView.OnNav
         String json=gson.toJson(list);
         editor.putString("list",json);
         editor.apply();
+        Toast.makeText(this, "saved variables :)", Toast.LENGTH_SHORT).show();
     }
 
 

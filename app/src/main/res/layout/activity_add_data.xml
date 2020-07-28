@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="add Data"
                 android:id="@+id/buttonAddData"
-                android:onClick="funcAddData"
+                android:background="@drawable/ripple"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="40dp"
                 />
